@@ -1,11 +1,23 @@
 const express = require('express');
 const app = express();
+app.use(express.static('public'));
 
 //ROTAS
-app.get('/', olaMundo)
+app.get('/', function(req,res){
+	res.sendFile(__dirname+'/public/index.html');
+} )
+app.get('/produtos', function(req,res){
+	res.sendFile(__dirname+'/public/produtos.html');
+} )
+app.get('/usuarios', function(req,res){
+	res.sendFile(__dirname+'/public/usuarios.html');
+} )
 app.get('/sobre', function(req,res){
-	res.send('<h1>Página Sobre</h1>');
-});
+	res.sendFile(__dirname+'/public/sobre.html');
+} )
+app.get('/teste', function(req,res){
+	res.sendFile(__dirname+'/public/teste.html');
+} )
 
 //SERVIDOR RODANDO…
 app.listen(3000,servidorRodando);
